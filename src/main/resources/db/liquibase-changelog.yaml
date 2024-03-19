@@ -17,12 +17,12 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
-#  - changeSet:
-#      id: 03_create_table_configuration
-#      author: postgres
-#      changes:
-#        - sqlFile:
-#            path: scripts/03_create_table_configuration.sql
-#            relativeToChangelogFile: true
-#            splitStatements: true
-#            stripComments: true
+  - changeSet:
+      id: 03_create_table_habit
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/03_create_table_habit.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

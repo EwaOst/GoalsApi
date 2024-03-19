@@ -16,11 +16,17 @@ public class HabitModel {
     private String habitName;
 
     @Column(name = "HABIT_FREQUENCY", length = 128)
-    private String habitFrequency;
+    private Frequency frequency;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserModel user;
+    @Column(name = "TRACK")
+    private boolean track;
+
+    @Column(name = "ACTIVITY")
+    private Activity activity;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel userId;
 
 
 
