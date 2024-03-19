@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01_create_table_user
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/01_create_table_user.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+#  - changeSet:
+#      id: 02_create_table_device
+#      author: postgres
+#      changes:
+#        - sqlFile:
+#            path: scripts/02_create_table_device.sql
+#            relativeToChangelogFile: true
+#            splitStatements: true
+#            stripComments: true
+#  - changeSet:
+#      id: 03_create_table_configuration
+#      author: postgres
+#      changes:
+#        - sqlFile:
+#            path: scripts/03_create_table_configuration.sql
+#            relativeToChangelogFile: true
+#            splitStatements: true
+#            stripComments: true

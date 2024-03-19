@@ -1,7 +1,11 @@
 package com.example.personalgoals.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Entity
+@Data
+@Table(name = "HABIT")
 public class HabitModel {
 
     @Id

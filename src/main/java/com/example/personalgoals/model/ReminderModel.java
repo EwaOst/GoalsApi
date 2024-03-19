@@ -1,9 +1,12 @@
 package com.example.personalgoals.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.ZonedDateTime;
-
+@Entity
+@Data
+@Table(name = "REMINDER")
 public class ReminderModel {
 
     @Id

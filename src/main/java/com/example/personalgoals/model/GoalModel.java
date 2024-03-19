@@ -1,8 +1,13 @@
 package com.example.personalgoals.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.ZonedDateTime;
+
+@Entity
+@Data
+@Table(name = "GOAL")
 
 public class GoalModel {
 

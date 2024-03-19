@@ -1,6 +1,6 @@
 package com.example.personalgoals.model;
 
-public enum HabitFrequencyEnum {
+public enum Frequency {
     DAILY,
     WEEKLY,
     MONTHLY

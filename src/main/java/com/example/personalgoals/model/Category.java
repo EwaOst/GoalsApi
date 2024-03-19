@@ -1,6 +1,6 @@
 package com.example.personalgoals.model;
 
-public enum GoalCategoryEnum {
+public enum Category {
     CAREER,
     RELATIONSHIPS,
     HEALTH,
