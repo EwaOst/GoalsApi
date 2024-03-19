@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -18,8 +20,8 @@ public class GoalModel {
     @Column(name = "GOAL_NAME", length = 128)
     private String goalName;
 
-    @Column(name = "GOAL_CATEGORY", length = 128)
-    private String goalCategory;
+    @Column(name = "GOAL_CATEGORY")
+    private Category category;
 
     @Column(name = "START_DATE")
     private ZonedDateTime startDate;
@@ -27,9 +29,9 @@ public class GoalModel {
     @Column(name = "END_DATE")
     private ZonedDateTime endDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private UserModel user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserModel userId;
 
 
 }

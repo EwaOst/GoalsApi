@@ -8,15 +8,15 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
-#  - changeSet:
-#      id: 02_create_table_device
-#      author: postgres
-#      changes:
-#        - sqlFile:
-#            path: scripts/02_create_table_device.sql
-#            relativeToChangelogFile: true
-#            splitStatements: true
-#            stripComments: true
+  - changeSet:
+      id: 02_create_table_goal
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/02_create_table_goal.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
 #  - changeSet:
 #      id: 03_create_table_configuration
 #      author: postgres
