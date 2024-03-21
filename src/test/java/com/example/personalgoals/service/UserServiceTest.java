@@ -1,5 +1,7 @@
 package com.example.personalgoals.service;
 
+import com.example.personalgoals.model.Category;
+import com.example.personalgoals.model.GoalModel;
 import com.example.personalgoals.model.UserModel;
 import com.example.personalgoals.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -9,6 +11,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,7 +41,7 @@ class UserServiceTest {
 
         //WHEN
         when(userRepository.save(any(UserModel.class))).thenReturn(userModel);
-        UserModel result = userService.createUser(String.valueOf(userModel));
+        UserModel result = userService.createUser(userModel);
 
         //THEN
         assertNotNull(result);
@@ -53,7 +59,7 @@ class UserServiceTest {
         //WHEN
         when(userRepository.findById(1L)).thenReturn(Optional.of(userModel));
 
-        Optional<UserModel> result = userService.getUser(1L);
+        Optional<UserModel> result = userService.findUserById(1L);
 
         //THEN
         assertTrue(result.isPresent());
@@ -66,22 +72,32 @@ class UserServiceTest {
 
         //GIVEN
         Long userId = 1L;
-        String newUserName = "New User Name";
-
         UserModel existingUser = new UserModel();
+
+
         existingUser.setId(userId);
         existingUser.setUserName("Old User Name");
+        existingUser.setEmail("ere@dsds.pl");
+        existingUser.setAge("22");
+
+        UserModel updatedUser = new UserModel();
+        updatedUser.setUserName("New User Name");
+        updatedUser.setEmail("dsfds@dsds.pl");
+        updatedUser.setAge("21");
+
 
         when(userRepository.findById(userId)).thenReturn(Optional.of(existingUser));
         when(userRepository.save(any(UserModel.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
         //WHEN
-        UserModel updatedUser = userService.updateUser(userId, newUserName);
+        Optional<UserModel> result = userService.updateUser(userId, updatedUser);
 
         //THEN
-        assertEquals(newUserName, updatedUser.getUserName());
-        verify(userRepository, times(1)).findById(userId);
-        verify(userRepository, times(1)).save(existingUser);
+        assertTrue(result.isPresent());
+        assertEquals(updatedUser.getUserName(), result.get().getUserName());
+        assertEquals(updatedUser.getEmail(), result.get().getEmail());
+        assertEquals(updatedUser.getAge(), result.get().getAge());
+
 
     }
 

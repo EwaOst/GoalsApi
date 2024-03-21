@@ -17,6 +17,9 @@ public class GoalModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "GOAL", columnDefinition = "TEXT", nullable = false)
+    private String goal;
+
     @Column(name = "GOAL_NAME", length = 128)
     private String goalName;
 
@@ -34,7 +37,13 @@ public class GoalModel {
     private UserModel userId;
 
 
-}
+    }
+
+
+
+
+
+
 
 
 //Identyfikator celu

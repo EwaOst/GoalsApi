@@ -30,15 +30,14 @@ public class GoalService {
     public Optional<GoalModel> findGoalById(Long id) {
         Optional<GoalModel> goal = goalRepository.findById(id);
         if (goal.isPresent()) {
-            goal.get();
+            return goal; // Zwróć cel, jeśli istnieje
         } else {
             throw new EntityNotFoundException("Goal not found");
         }
-        return goal;
     }
 
-    public GoalModel updateGoal(Long id, GoalModel updateGoal) {
-        return goalRepository.findById(id)
+    public Optional<GoalModel> updateGoal(Long id, GoalModel updateGoal) {
+        return Optional.ofNullable(goalRepository.findById(id)
                 .map(goal -> {
                     goal.setGoalName(updateGoal.getGoalName());
                     goal.setCategory(updateGoal.getCategory());
@@ -46,7 +45,7 @@ public class GoalService {
                     goal.setEndDate(updateGoal.getEndDate());
                     return goalRepository.save(goal);
                 })
-                .orElseThrow(() -> new RuntimeException("Goal do not exists"));
+                .orElseThrow(() -> new RuntimeException("Goal do not exists")));
     }
 
     public void deleteGoal(Long id) {

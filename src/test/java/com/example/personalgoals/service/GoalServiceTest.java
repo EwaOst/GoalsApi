@@ -80,18 +80,19 @@ class GoalServiceTest {
         updatedGoal.setCategory(Category.SPIRITUAL);
         updatedGoal.setStartDate(ZonedDateTime.of(LocalDate.of(2024, 1, 1), LocalTime.MIDNIGHT, ZoneId.systemDefault()));
         updatedGoal.setEndDate(ZonedDateTime.of(LocalDate.of(2024, 5, 30), LocalTime.MIDNIGHT, ZoneId.systemDefault()));
+
         when(goalRepository.findById(goalId)).thenReturn(Optional.of(existingGoal));
         when(goalRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
-        // When
-        GoalModel result = goalService.updateGoal(goalId, updatedGoal);
+// When
+        Optional<GoalModel> result = goalService.updateGoal(goalId, updatedGoal);
 
-        // Then
-        assertNotNull(result);
-        assertEquals(updatedGoal.getGoalName(), result.getGoalName());
-        assertEquals(updatedGoal.getCategory(), result.getCategory());
-        assertEquals(updatedGoal.getStartDate(), result.getStartDate());
-        assertEquals(updatedGoal.getEndDate(), result.getEndDate());
+// Then
+        assertTrue(result.isPresent());
+        assertEquals(updatedGoal.getGoalName(), result.get().getGoalName());
+        assertEquals(updatedGoal.getCategory(), result.get().getCategory());
+        assertEquals(updatedGoal.getStartDate(), result.get().getStartDate());
+        assertEquals(updatedGoal.getEndDate(), result.get().getEndDate());
     }
 
     @Test

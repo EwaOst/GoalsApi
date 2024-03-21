@@ -35,15 +35,12 @@ public class GoalController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateGoal(@PathVariable Long id, @RequestBody GoalModel goal) {
-        return goalService.findGoalById(id).map(updateGoal -> {
-            updateGoal.setGoalName(goal.getGoalName());
-            updateGoal.setCategory(goal.getCategory());
-            updateGoal.setStartDate(goal.getStartDate());
-            updateGoal.setEndDate(goal.getEndDate());
-            GoalModel updatedGoal = goalService.createGoal(updateGoal);
-            return ResponseEntity.ok(updatedGoal);
-        }).orElse(ResponseEntity.notFound().build());
+        return goalService.updateGoal(id, goal)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound()
+                        .build());
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteGoal(@PathVariable Long id) {
@@ -51,16 +48,16 @@ public class GoalController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{id}/category")
-    public ResponseEntity<GoalModel> updateGoalCategory(@PathVariable Long id, @RequestParam String category) {
-        GoalModel updatedGoal = goalService.updateGoalCategory(id, category);
-        return ResponseEntity.ok(updatedGoal);
-    }
-
-    @PutMapping("/{id}/dates")
-    public ResponseEntity<GoalModel> updateGoalDates(@PathVariable Long id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-                                                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-        GoalModel updatedGoal = goalService.updateGoalDates(id, startDate, endDate);
-        return ResponseEntity.ok(updatedGoal);
-    }
+//    @PutMapping("/{id}/category")
+//    public ResponseEntity<GoalModel> updateGoalCategory(@PathVariable Long id, @RequestParam String category) {
+//        GoalModel updatedGoal = goalService.updateGoalCategory(id, category);
+//        return ResponseEntity.ok(updatedGoal);
+//    }
+//
+//    @PutMapping("/{id}/dates")
+//    public ResponseEntity<GoalModel> updateGoalDates(@PathVariable Long id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+//                                                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+//        GoalModel updatedGoal = goalService.updateGoalDates(id, startDate, endDate);
+//        return ResponseEntity.ok(updatedGoal);
+//    }
 }
