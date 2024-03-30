@@ -23,7 +23,7 @@ public class UserService {
     public Optional<UserModel> findUserById(Long id) {
         Optional<UserModel> user = userRepository.findById(id);
         if (user.isPresent()) {
-            return user; // Zwróć cel, jeśli istnieje
+            return user;
         } else {
             throw new EntityNotFoundException("Goal not found");
         }

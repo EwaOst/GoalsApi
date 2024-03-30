@@ -110,12 +110,4 @@ class GoalServiceTest {
         verify(goalRepository).deleteById(id);
 
     }
-
-//    @Test
-//    void updateGoalCategory() {
-//    }
-//
-//    @Test
-//    void updateGoalDates() {
-//    }
 }

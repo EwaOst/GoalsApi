@@ -55,21 +55,5 @@ public class GoalService {
         goalRepository.deleteById(id);
     }
 
-
-//    public GoalModel updateGoalCategory(Long goalId, String category) {
-//        GoalModel goal = goalRepository.findById(goalId)
-//                .orElseThrow(() -> new EntityNotFoundException("Goal not found"));
-//        goal.setCategory(Category.valueOf(category));
-//        return goalRepository.save(goal);
-//    }
-//
-//    public GoalModel updateGoalDates(Long goalId, LocalDate startDate, LocalDate endDate) {
-//        GoalModel goal = goalRepository.findById(goalId)
-//                .orElseThrow(() -> new EntityNotFoundException("Goal not found"));
-//        goal.setStartDate(ZonedDateTime.from(startDate));
-//        goal.setEndDate(ZonedDateTime.from(endDate));
-//        return goalRepository.save(goal);
-
-
 }
 

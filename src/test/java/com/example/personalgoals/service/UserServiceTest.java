@@ -98,7 +98,6 @@ class UserServiceTest {
         assertEquals(updatedUser.getEmail(), result.get().getEmail());
         assertEquals(updatedUser.getAge(), result.get().getAge());
 
-
     }
 
     @Test

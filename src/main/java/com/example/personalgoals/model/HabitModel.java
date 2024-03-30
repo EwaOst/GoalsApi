@@ -28,14 +28,4 @@ public class HabitModel {
     @JoinColumn(name = "user_id")
     private UserModel userId;
 
-
-
-
-
-
-//    Identyfikator nawyku
-//    Nazwa nawyku
-//    Częstotliwość nawyku (np. codziennie, tygodniowo, miesięcznie)
-//    Aktywność związana z nawykiem (np. data wykonania, liczba powtórzeń)
-//    Identyfikator użytkownika powiązany z nawykiem
 }

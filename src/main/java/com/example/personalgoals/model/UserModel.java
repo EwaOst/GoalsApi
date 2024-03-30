@@ -15,9 +15,6 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(name = "USERS", columnDefinition = "TEXT")
-//    private String users;
-
     @Column(name = "USER_NAME", length = 128, nullable = false)
     private String userName;
 
@@ -29,10 +26,5 @@ public class UserModel {
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<GoalModel> goals = new HashSet<>();
-
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "GENDER")
-//    private GenderEnum gender;
-
 
 }

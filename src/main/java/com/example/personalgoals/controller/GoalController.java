@@ -48,16 +48,4 @@ public class GoalController {
         return ResponseEntity.noContent().build();
     }
 
-//    @PutMapping("/{id}/category")
-//    public ResponseEntity<GoalModel> updateGoalCategory(@PathVariable Long id, @RequestParam String category) {
-//        GoalModel updatedGoal = goalService.updateGoalCategory(id, category);
-//        return ResponseEntity.ok(updatedGoal);
-//    }
-//
-//    @PutMapping("/{id}/dates")
-//    public ResponseEntity<GoalModel> updateGoalDates(@PathVariable Long id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-//                                                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
-//        GoalModel updatedGoal = goalService.updateGoalDates(id, startDate, endDate);
-//        return ResponseEntity.ok(updatedGoal);
-//    }
 }

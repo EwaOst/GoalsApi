@@ -36,18 +36,4 @@ public class GoalModel {
     @JoinColumn(name = "user_id")
     private UserModel userId;
 
-
-    }
-
-
-
-
-
-
-
-
-//Identyfikator celu
-//Nazwa celu
-//Kategoria celu (np. zdrowie, nauka, finanse)
-//Data początkowa i końcowa celu
-//Identyfikator użytkownika powiązany z celem
+}
